@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="htmlService.js"></script>
+  <script src="jsService.js"></script>
+  <script src="tests.js"></script>
+  <script src="dirty-checking.js"></script>
+
+  <script src="app.js"></script>
+</head>
+
+<body>
+
+  <h1>Two way data binding with dirty checking </h1>
+
+  <h2>Input</h2>
+  <table>
+    <tr>
+      <td class="thead">Name</td>
+      <td><input type="text" data-bind="person.name" /></td>
+    </tr>
+    <tr>
+      <td class="thead">Address</td>
+      <td><input type="text" data-bind="person.address" /></td>
+    </tr>
+  </table>
+
+  <h2>Output</h2>
+  <table class="labels">
+    <tr>
+      <td class="thead">Name</td>
+      <td>
+        <div class="label bold" data-bind="person.name"></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="thead">Address</td>
+      <td>
+        <div class="label bold" data-bind="person.address"></div>
+      </td>
+    </tr>
+  </table>
+
+  <button onClick="ChangeDataModel()">Change data model from JS</button>
+
+</body>
+
+</html>

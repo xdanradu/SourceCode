@@ -1,0 +1,49 @@
+body{
+  font-family: 'Roboto', sans-serif;
+  margin:50px;
+  padding:10px;
+}
+
+input{
+  height:25px;
+  border:1px solid #dedede;
+  padding:10px;
+  font-size:16px;
+  margin-left:10px;
+  margin-right:20px;
+  min-width:1000px
+}
+
+input:hover{
+  border:1px solid #4292f4;
+}
+
+.labels{
+  width:400px;
+    margin-top:10px;
+    margin-bottom:20px;
+    text-align: left;
+      min-width:1000px
+}
+
+ .thead{
+     width:80px;
+ }
+
+.label{
+  padding-right:10px;
+}
+
+.bold{
+    font-weight:bold;
+}
+
+button{
+  height:45px;
+  font-size:16px;
+  cursor:pointer;
+}
+
+h2{
+  margin-bottom:5px;
+}
