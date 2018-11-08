@@ -6,14 +6,13 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 public class Client extends Thread{
-	
-	private final String HOST_NAME;
-	private final int PORT;
-	private String messageToSend;
-	
+		
 	private Socket socket;
 	private BufferedReader in;
 	private PrintWriter out;
+	private final String HOST_NAME;
+	private final int PORT;
+	private String messageToSend;
 	
 	public Client(String hostName, int port, String message) {
 		this.PORT = port;
