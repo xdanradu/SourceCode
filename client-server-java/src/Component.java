@@ -12,12 +12,14 @@ public class Component {
 	
 	public void startServer() {
 		Server server = new Server(this.HOST_PORT);
-		System.out.println("Starting server for Component "+this.NAME+" on Thread (id: "+server.getId()+")");
+		System.out.println("Starting Server for Component "+this.NAME+" on Thread (id: "+server.getId()+")");
 		server.start();
 	}
 	
 	public void sendMessageTo(Component destination, String message) {
-		new Client(destination.getHostName(), destination.getPort(), message).start();
+		Client client = new Client(destination.getHostName(), destination.getPort(), message);	
+		System.out.println("Starting Client for Component "+this.NAME+" on Thread (id: "+client.getId()+")");
+		client.start();
 	}
 	
 	private int getPort() {

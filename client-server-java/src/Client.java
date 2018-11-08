@@ -9,28 +9,39 @@ public class Client extends Thread{
 	
 	private final String HOST_NAME;
 	private final int PORT;
-	private String message;
+	private String messageToSend;
+	
+	private Socket socket;
+	private BufferedReader in;
+	private PrintWriter out;
 	
 	public Client(String hostName, int port, String message) {
-		this.PORT=port;
+		this.PORT = port;
 		this.HOST_NAME = hostName;
-		this.message = message;
+		this.messageToSend = message;
+		try {
+			socket = new Socket(this.HOST_NAME, this.PORT);
+			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())),
+					true);	
+			} catch(Exception ex) {
+				System.out.println(ex.getMessage());
+			}
 	}
 
 	public void run() {
+
 		try {
-			Socket socket = new Socket(this.HOST_NAME, this.PORT);
-			BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())),
-					true);
-			String line = "";
-			out.println(this.message);
-			line = in.readLine();
-			System.out.println("Client (id:"+this.getId()+") RECEIVED >> "+line);
+			out.println(this.messageToSend);
+			String receivedMessage = "";
+			receivedMessage = in.readLine();
+			System.out.println("Client (id:"+this.getId()+") REC >> "+receivedMessage);
 			out.println("STOP");
-			line = in.readLine();
-			System.out.println("Client (id:"+this.getId()+") RECEIVED >> "+line);
+			receivedMessage = in.readLine();
+			System.out.println("Client (id:"+this.getId()+") REC >> "+receivedMessage);			
 		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
 		}
+		
 	}
 }
